@@ -79,7 +79,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
+                            backgroundColor: Colors.grey,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text('', style: TextStyle(color: Colors.red)),

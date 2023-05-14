@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       ProfileScreen(),
       SearchPage(),
       Center(
-        child: Text("Setting"),
+        child: Text("Statistics"),
       ),
     ];
 

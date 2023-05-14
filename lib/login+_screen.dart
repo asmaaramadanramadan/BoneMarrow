@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:g_project/widget/fields.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 //import 'package:day12_login/Animation/FadeAnimation.dart';
 import 'Animation/FadeAnimation.dart';
 
 import 'package:g_project/registerScreen.dart';
 import 'home_screen.dart';
+import 'main.dart';
 import 'nav_drawer.dart';
 
 class Login_Screen extends StatefulWidget {
@@ -130,8 +132,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                             DoctorRegist()),
+                                        builder: (context) => DoctorRegist()),
                                   );
                                   setState(() {
                                     // lSwitch = !lSwitch;
@@ -187,7 +188,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               pIcon: const Icon(Icons.perm_identity_outlined),
               onSave: () => (String? val) {
                 setState(() {
-                 // Email = _namecontroller.text;
+                  // Email = _namecontroller.text;
                 });
               },
               validate: () => (String? val) {
@@ -218,7 +219,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               ),
               onSave: () => (String? val) {
                 setState(() {
-                //  password = passwordcontroler.text;
+                  //  password = passwordcontroler.text;
                 });
               },
               validate: () => (String? val) {
@@ -237,8 +238,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     "Forget Password ?",
                     style: TextStyle(color: Colors.purple),
                   ),
-                  onTap: (){
-                  },
+                  onTap: () {},
                 ),
               ],
             ),
@@ -251,13 +251,13 @@ class _Login_ScreenState extends State<Login_Screen> {
                 shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.purple.shade300),
                     borderRadius: BorderRadius.circular(15.0)),
-
                 onPressed: () {
-                  postlogin(_namecontroller.text, passwordcontroler.text).then((value) {
+                  postlogin(_namecontroller.text, passwordcontroler.text)
+                      .then((value)  {
+                    shared.setString("token", value['token']);
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (_) => HomePage()));
-                  }
-
+                  });
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -274,8 +274,10 @@ class _Login_ScreenState extends State<Login_Screen> {
       ),
     );
   }
-  Future<String> postlogin(String username, String password) async {
-    var url = Uri.parse('http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/jwt/create/');
+
+  Future postlogin(String username, String password) async {
+    var url = Uri.parse(
+        'http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/jwt/create/');
     var response = await http.post(url, body: {
       'username': username,
       'password': password,
