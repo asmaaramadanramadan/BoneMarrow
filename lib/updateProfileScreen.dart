@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g_project/widget/fields.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
@@ -11,7 +12,8 @@ class UpdateProfileScreen extends StatelessWidget {
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
         }, icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text('', style: Theme.of(context).textTheme.headline4),
+        title: const Text('UPdate Profile', ),
+        backgroundColor: m_color,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -27,7 +29,7 @@ class UpdateProfileScreen extends StatelessWidget {
                     height: 120,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage(''))),
+                        child: const Image(image: AssetImage('assets/images/doctor2.jpg'))),
                   ),
                   Positioned(
                     bottom: 0,
@@ -36,7 +38,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       width: 35,
                       height: 35,
                       decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.red),
+                      BoxDecoration(borderRadius: BorderRadius.circular(100), color: m_color),
                       child: const Icon(LineAwesomeIcons.camera, color: Colors.black, size: 20),
                     ),
                   ),
@@ -82,7 +84,7 @@ class UpdateProfileScreen extends StatelessWidget {
                             backgroundColor: Colors.grey,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text('', style: TextStyle(color: Colors.red)),
+                        child: const Text('Edit Profile', style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 1),
@@ -105,12 +107,12 @@ class UpdateProfileScreen extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent.withOpacity(0.1),
+                              backgroundColor: b_color,
                               elevation: 0,
-                              foregroundColor: Colors.red,
+                              foregroundColor: b_color,
                               shape: const StadiumBorder(),
                               side: BorderSide.none),
-                          child: const Text(''),
+                          child: const Text('Delete',style: TextStyle(color: Colors.white),),
                         ),
                       ],
                     )
