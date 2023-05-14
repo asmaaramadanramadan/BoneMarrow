@@ -36,12 +36,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
         ],
       ) : null,
-      body:FutureBuilder(
-        future:getProfileInfo(shared.getString("token")??''),
-        builder:(context,snapshot){
-          if(snapshot.hasData){
-            Map profileData= snapshot.data as Map;
-            return  SingleChildScrollView(
+      body: SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.all(8),
                 child: Column(
@@ -77,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    Text(profileData['name'], style: Theme
+                    Text("Asmaa Ram", style: Theme
                         .of(context)
                         .textTheme
                         .headline4),
@@ -156,13 +151,137 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            );
-          }else{
-            return const Center(child: CircularProgressIndicator(),);
-          }
-        },
-      ),
+            ),
     );
+          }
+
+      // body:FutureBuilder(
+      //   future:getProfileInfo(shared.getString("token")??''),
+      //   builder:(context,snapshot){
+      //     if(snapshot.hasData){
+      //       Map profileData= snapshot.data as Map;
+      //       return  SingleChildScrollView(
+      //         child: Container(
+      //           padding: const EdgeInsets.all(8),
+      //           child: Column(
+      //             children: [
+      //
+      //               /// -- IMAGE
+      //               Stack(
+      //                 children: [
+      //                   SizedBox(
+      //                     width: 120,
+      //                     height: 120,
+      //                     child: ClipRRect(
+      //                         borderRadius: BorderRadius.circular(50),
+      //                         child: const Image(
+      //                             image: AssetImage('assets/images/doctor2.jpg'))),
+      //                   ),
+      //                   Positioned(
+      //                     bottom: 0,
+      //                     right: 0,
+      //                     child: Container(
+      //                       width: 35,
+      //                       height: 35,
+      //                       decoration: BoxDecoration(
+      //                           borderRadius: BorderRadius.circular(100),
+      //                           color: Colors.purple[300]),
+      //                       child: const Icon(
+      //                         LineAwesomeIcons.alternate_pencil,
+      //                         color: Colors.black,
+      //                         size: 20,
+      //                       ),
+      //                     ),
+      //                   ),
+      //                 ],
+      //               ),
+      //               const SizedBox(height: 8),
+      //               Text(profileData['name'], style: Theme
+      //                   .of(context)
+      //                   .textTheme
+      //                   .headline4),
+      //               Text('asmaa@gmail.com', style: Theme
+      //                   .of(context)
+      //                   .textTheme
+      //                   .bodyText2),
+      //               const SizedBox(height: 10),
+      //
+      //               /// -- BUTTON
+      //               SizedBox(
+      //                 width: 200,
+      //                 child: ElevatedButton(
+      //                   onPressed:(){
+      //                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const UpdateProfileScreen()));
+      //                   },
+      //                   style: ElevatedButton.styleFrom(
+      //                       backgroundColor: Colors.purple[300],
+      //                       side: BorderSide.none,
+      //                       shape: const StadiumBorder()),
+      //                   child: const Text(
+      //                       'UpdateProfile', style: TextStyle(color: Colors.black)),
+      //                 ),
+      //               ),
+      //               const SizedBox(height: 10),
+      //               const Divider(),
+      //               const SizedBox(height: 10),
+      //
+      //               /// -- MENU
+      //               ProfileMenuWidget(
+      //                   title: "Settings",
+      //                   icon: LineAwesomeIcons.cog,
+      //                   onPress: () {}),
+      //               ProfileMenuWidget(
+      //                   title: " patients",
+      //                   icon: LineAwesomeIcons.wallet,
+      //                   onPress: () {}),
+      //               ProfileMenuWidget(
+      //                   title: "User Management",
+      //                   icon: LineAwesomeIcons.user_check,
+      //                   onPress: () {}),
+      //               const Divider(),
+      //               const SizedBox(height: 10),
+      //               ProfileMenuWidget(
+      //                   title: "Information",
+      //                   icon: LineAwesomeIcons.info,
+      //                   onPress: () {}),
+      //               ProfileMenuWidget(
+      //                   title: "Logout",
+      //                   icon: LineAwesomeIcons.alternate_sign_out,
+      //                   textColor: Colors.black,
+      //                   endIcon: false,
+      //                   onPress: () {
+      //                     Get.defaultDialog(
+      //                       title: "LOGOUT",
+      //                       titleStyle: const TextStyle(fontSize: 20),
+      //                       content: const Padding(
+      //                         padding: EdgeInsets.symmetric(vertical: 15.0),
+      //                         child: Text("Are you sure, you want to Logout?"),
+      //                       ),
+      //                       confirm: Expanded(
+      //                         child: ElevatedButton(
+      //                           onPressed: () {
+      //
+      //                           },
+      //                           style: ElevatedButton.styleFrom(
+      //                               backgroundColor: Colors.redAccent,
+      //                               side: BorderSide.none),
+      //                           child: const Text("Yes"),
+      //                         ),
+      //                       ),
+      //                       cancel: OutlinedButton(
+      //                           onPressed: () => Get.back(), child: const Text("No")),
+      //                     );
+      //                   }),
+      //             ],
+      //           ),
+      //         ),
+      //       );
+      //     }else{
+      //       return const Center(child: CircularProgressIndicator(),);
+      //     }
+      //   },
+      // ),
+
 
   }
   Future<Map<String, dynamic>> getProfileInfo(String token) async {
@@ -186,5 +305,5 @@ class ProfileScreen extends StatelessWidget {
     }
   }
 
-}
+
 

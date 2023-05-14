@@ -200,13 +200,18 @@ class _DoctorRegistState extends State<DoctorRegist> {
                 shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.purple.shade300),
                     borderRadius: BorderRadius.circular(15.0)),
-                onPressed: ()async {
-                await  createUser(_namecontroller.text, emailcontroler.text,
-                      passwordcontroler.text, comfirmPasscontroler.text)
-                      .whenComplete(() =>
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => HomePage())));
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => HomePage()));
                 },
+
+                // onPressed: ()async {
+                // await  createUser(_namecontroller.text, emailcontroler.text,
+                //       passwordcontroler.text, comfirmPasscontroler.text)
+                //       .whenComplete(() =>
+                //       Navigator.pushReplacement(context,
+                //           MaterialPageRoute(builder: (_) => HomePage())));
+                // },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
@@ -221,31 +226,34 @@ class _DoctorRegistState extends State<DoctorRegist> {
       ),
     );
   }
+
   // Post Requist
-Future<void> createUser(String username, String email, String password, String confirmPassword) async {
-  final url = Uri.parse('http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/users/');
-  final response = await http.post(
-    url,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: json.encode(
-        {
-      'name': username,
-      'email': email,
-      'password': password,
-      'confirm_password': confirmPassword,
+  Future<void> createUser(String username, String email, String password,
+      String confirmPassword) async {
+    final url = Uri.parse(
+        'http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/users/');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(
+          {
+            'name': username,
+            'email': email,
+            'password': password,
+            'confirm_password': confirmPassword,
+          }
+      ),
+    );
+    if (response.statusCode == 200) {
+      // User was created successfully
+      print('User created successfully');
+    } else {
+      // Handle error response
+      print('Failed to create user: ${response.statusCode}');
     }
-    ),
-  );
-  if (response.statusCode == 200) {
-    // User was created successfully
-    print('User created successfully');
-  } else {
-    // Handle error response
-    print('Failed to create user: ${response.statusCode}');
   }
-}
 }
 
 

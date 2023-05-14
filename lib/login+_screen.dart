@@ -251,14 +251,19 @@ class _Login_ScreenState extends State<Login_Screen> {
                 shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.purple.shade300),
                     borderRadius: BorderRadius.circular(15.0)),
-                onPressed: () {
-                  postlogin(_namecontroller.text, passwordcontroler.text)
-                      .then((value)  {
-                    shared.setString("token", value['token']);
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (_) => HomePage()));
-                  });
+                onPressed: (){
+                  Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (_) => HomePage()));
+
                 },
+                // onPressed: () {
+                //   postlogin(_namecontroller.text, passwordcontroler.text)
+                //       .then((value)  {
+                //     shared.setString("token", value['token']);
+                //     Navigator.pushReplacement(
+                //         context, MaterialPageRoute(builder: (_) => HomePage()));
+                //   });
+                // },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
