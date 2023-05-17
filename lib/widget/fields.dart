@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 var m_color = Colors.deepPurple[300];
-Color? b_color = Colors.deepPurple[200];
+var b_color = Colors.deepPurple[200];
 class defultTextFied extends StatelessWidget {
   String? hint;
   String? label;

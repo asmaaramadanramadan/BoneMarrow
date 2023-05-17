@@ -8,12 +8,12 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'Prediction_Screen1.dart';
-import 'dashboard.dart';
-import 'doctor_profile.dart';
-import 'doctor_screen.dart';
+
+//import 'doctor_profile.dart';
+//import 'doctor_screen.dart';
 import 'f_Page.dart';
 import 'c_Full_result.dart';
-import 'onboarder.dart';
+//import 'onboarder.dart';
 import 'p_fullResult.dart';
 import 'home_screen.dart';
 
@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home:splashScreen());
+        home:HomePage
+          ());
   }
 }
