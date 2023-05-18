@@ -147,16 +147,16 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 ),
                               ),
                             ]),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/images/google.png"),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Image.asset("assets/images/facebook.png"),
-                          ],
-                        )
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Image.asset("assets/images/google.png"),
+                        //     const SizedBox(
+                        //       width: 20,
+                        //     ),
+                        //     Image.asset("assets/images/facebook.png"),
+                        //   ],
+                        // )
                       ],
                     ),
                   ),
@@ -267,7 +267,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    "Sign in ",
+                    "login",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

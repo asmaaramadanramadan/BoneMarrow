@@ -1,11 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
  import 'package:flutter/material.dart';
 // import 'package:investment/cardDesign.dart';
 // import 'package:investment/dataset.dart';
 // import 'package:investment/investment.dart';
 // import 'package:investment/lastInvestment.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int index = 0;
+
+  final _bottomNavigationKey = GlobalKey<CurvedNavigationBarState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +65,43 @@ class HomePage extends StatelessWidget {
               ],
           ),
         ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.purple.shade200,
+        backgroundColor: Colors.white,
+        height: 30,
+        index: index,
+        items: const [
+          Icon(
+            Icons.home,
+            size: 20,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            size: 20,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.search,
+            size: 20,
+            color: Colors.white,
+          ),
+          // Icon(
+          //   Icons.settings,
+          //   size: 20,
+          //   color: Colors.white,
+          // ),
+          Icon(
+            Icons.stacked_bar_chart,
+            size: 20,
+            color: Colors.white,
+          )
+        ],
+        key: _bottomNavigationKey,
+        onTap: (index) => setState(() {
+          this.index = index;
+        }),
       ),
     );
   }

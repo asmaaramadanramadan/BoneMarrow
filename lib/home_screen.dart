@@ -224,30 +224,30 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 10,
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: b_color,
-            ),
-            child: Column(children: [
-              Text(
-                "About  Processes",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-              SizedBox(
-                height: 14,
-              ),
-              Center(
-                  child: Text(
-                " Anatomy of the bone. The bone is made up of compact bone, spongy bone, and bone marrow. Compact bone makes up the outer layer of the bone. Spongy bone is found mostly at the ends of bones and contains red marrow. Bone marrow is found in the center of most bones and has many blood vessels. There are two types of bone marrow: red and yellow. Red marrow contains blood stem cells that can become red blood cells, white blood cells, or platelets. Yellow marrow is made mostly of fat.",
-              )),
-              SizedBox(
-                height: 25,
-              ),
-            ]),
-          ),
+          // Container(
+          //   decoration: BoxDecoration(
+          //     color: b_color,
+          //   ),
+          //   child: Column(children: [
+          //     Text(
+          //       "About  Processes",
+          //       style: TextStyle(
+          //           fontSize: 30,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.black),
+          //     ),
+          //     SizedBox(
+          //       height: 14,
+          //     ),
+          //     // Center(
+          //     //     child: Text(
+          //     //   " Anatomy of the bone. The bone is made up of compact bone, spongy bone, and bone marrow. Compact bone makes up the outer layer of the bone. Spongy bone is found mostly at the ends of bones and contains red marrow. Bone marrow is found in the center of most bones and has many blood vessels. There are two types of bone marrow: red and yellow. Red marrow contains blood stem cells that can become red blood cells, white blood cells, or platelets. Yellow marrow is made mostly of fat.",
+          //     // )),
+          //     SizedBox(
+          //       height: 25,
+          //     ),
+          //   ]),
+          // ),
         ],
       ),
     );

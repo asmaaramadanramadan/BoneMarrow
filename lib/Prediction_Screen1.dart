@@ -75,35 +75,40 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
         children: [
           SizedBox(height: 30),
           name(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Age(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           n_id(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           phone(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           gender(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           address(),
-          SizedBox(height: 20),
-          InkWell(
-            onTap: () {
-              loadP_File();
-            },
-            child: Container(
-                height: 40,
-                width: 100,
-                color: Colors.purple,
-                child: const Center(
-                    child: Text(
-                      "load files",
-                      style: TextStyle(color: Colors.white),
-                    ))),
-          ),
+          SizedBox(height: 10),
+          load(),
+
+
+
+          // InkWell(
+          //   onTap: () {
+          //     loadP_File();
+          //   },
+          //   child: Container(
+          //       height: 40,
+          //       width: 100,
+          //       color: Colors.purple,
+          //       child: const Center(
+          //           child: Text(
+          //             "load files",
+          //             style: TextStyle(color: Colors.white),
+          //           ))),
+          // ),
           SizedBox(height: 20),
           //Spacer(),
           save(),
           SizedBox(height: 20),
+
         ],
       ),
     );
@@ -297,7 +302,27 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
       ),
     );
   }
-
+  Padding load() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: addresscontroler,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          labelText: 'upload Filee',
+          labelStyle: TextStyle(fontSize: 17,
+              color: Colors.grey.shade500),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+        ),
+        keyboardType: TextInputType.text,
+      ),
+    );
+  }
   Column background_container(BuildContext context) {
     return Column(
       children: [
