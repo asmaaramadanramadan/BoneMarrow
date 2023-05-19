@@ -53,8 +53,8 @@ class _DoctorRegistState extends State<DoctorRegist> {
 
               ),
               Text(
-                "Hello!", style: TextStyle(color: Colors.black, fontSize: 25),),
-              SizedBox(height: 10,), signUP(),
+                "Hello!", style: TextStyle(color: Colors.white, fontSize: 25),),
+              SizedBox(height: 10,), Register(),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   "Have an account ?",
@@ -72,7 +72,7 @@ class _DoctorRegistState extends State<DoctorRegist> {
                       lSwitch = !lSwitch;
                     });
                   },
-                  child: Text("Sign In",
+                  child: Text("Login",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -87,7 +87,7 @@ class _DoctorRegistState extends State<DoctorRegist> {
     );
   }
 
-  Form signUP() {
+  Form Register() {
     return Form(
       key: _key,
       child: Container(
@@ -135,7 +135,7 @@ class _DoctorRegistState extends State<DoctorRegist> {
               vall: false,
               mycontroler: emailcontroler,
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 8.0,),
             defultTextFied(
               hint: "Enter Password",
               //  label: "Password",
@@ -164,7 +164,7 @@ class _DoctorRegistState extends State<DoctorRegist> {
               vall: false,
               mycontroler: passwordcontroler,
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 8.0,),
             defultTextFied(
               hint: "Comfirm password",
               label: "Comfirm password",
@@ -193,30 +193,24 @@ class _DoctorRegistState extends State<DoctorRegist> {
               vall: false,
               mycontroler: comfirmPasscontroler,
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 8.0,),
             MaterialButton(
                 minWidth: 30.0,
-                color: Colors.white,
+                color: Colors.purple.shade300,
                 shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.purple.shade300),
                     borderRadius: BorderRadius.circular(15.0)),
                 onPressed: () {
+                  if(_key.currentState!.validate()){
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => HomePage()));
+                      MaterialPageRoute(builder: (_) => HomePage()));}
                 },
 
-                // onPressed: ()async {
-                // await  createUser(_namecontroller.text, emailcontroler.text,
-                //       passwordcontroler.text, comfirmPasscontroler.text)
-                //       .whenComplete(() =>
-                //       Navigator.pushReplacement(context,
-                //           MaterialPageRoute(builder: (_) => HomePage())));
-                // },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    "Sign up ",
-                    style: TextStyle(color: Colors.black,
+                    "Register ",
+                    style: TextStyle(color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
@@ -227,33 +221,6 @@ class _DoctorRegistState extends State<DoctorRegist> {
     );
   }
 
-  // Post Requist
-  Future<void> createUser(String username, String email, String password,
-      String confirmPassword) async {
-    final url = Uri.parse(
-        'http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/users/');
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: json.encode(
-          {
-            'name': username,
-            'email': email,
-            'password': password,
-            'confirm_password': confirmPassword,
-          }
-      ),
-    );
-    if (response.statusCode == 200) {
-      // User was created successfully
-      print('User created successfully');
-    } else {
-      // Handle error response
-      print('Failed to create user: ${response.statusCode}');
-    }
-  }
 }
 
 

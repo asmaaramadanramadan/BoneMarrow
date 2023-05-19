@@ -27,7 +27,7 @@ class defultTextFied extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height:48,
+  height:70,
       child: TextFormField(
         keyboardType: type,
         validator: validate!(),
@@ -46,13 +46,13 @@ class defultTextFied extends StatelessWidget {
 
           ),
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(color: Colors.purple.shade200, width: 1.2)),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(14),
               borderSide:BorderSide(color: Colors.purple.shade200, width: 1.2)),
             focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(14),
             borderSide: BorderSide(color: Colors.purple.shade200, width: 1.2),
           ),
           filled: true,

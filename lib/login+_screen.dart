@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Animation/FadeAnimation.dart';
 
 import 'package:g_project/registerScreen.dart';
+import 'ResetPage.dart';
 import 'home_screen.dart';
 import 'main.dart';
 import 'nav_drawer.dart';
@@ -36,7 +37,7 @@ class _Login_ScreenState extends State<Login_Screen> {
   var passwordcontroler = TextEditingController();
 
   //var phonecontroller = TextEditingController();
-  //var emailcontroler = TextEditingController();
+  var emailcontroler = TextEditingController();
 
   bool passvisible = true;
 
@@ -89,7 +90,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 50),
+                      margin: const EdgeInsets.only(top: 40),
                       child: const Center(
                         child: Text(
                           "Login",
@@ -105,60 +106,58 @@ class _Login_ScreenState extends State<Login_Screen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Welcome Doctor",
-                          style: TextStyle(
-                              color: Colors.purple.shade300,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                        lSwitch ? const DoctorRegist() : signIn(),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Don\'t  have an account ?",
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Welcome Doctor",
+                        style: TextStyle(
+                            color: Colors.purple.shade300,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30),
+                      ),
+                      lSwitch ? const DoctorRegist() :  Login(),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Don\'t  have an account ?",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DoctorRegist()),
+                                );
+                                setState(() {
+                                  // lSwitch = !lSwitch;
+                                });
+                              },
+                              child: Text(
+                                "Register Now",
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.purple.shade200),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DoctorRegist()),
-                                  );
-                                  setState(() {
-                                    // lSwitch = !lSwitch;
-                                  });
-                                },
-                                child: Text(
-                                  "Register Now",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Colors.purple.shade200),
-                                ),
-                              ),
-                            ]),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     Image.asset("assets/images/google.png"),
-                        //     const SizedBox(
-                        //       width: 20,
-                        //     ),
-                        //     Image.asset("assets/images/facebook.png"),
-                        //   ],
-                        // )
-                      ],
-                    ),
+                            ),
+                          ]),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     Image.asset("assets/images/google.png"),
+                      //     const SizedBox(
+                      //       width: 20,
+                      //     ),
+                      //     Image.asset("assets/images/facebook.png"),
+                      //   ],
+                      // )
+                    ],
                   ),
                 ),
               ),
@@ -169,7 +168,7 @@ class _Login_ScreenState extends State<Login_Screen> {
     );
   }
 
-  Form signIn() {
+  Form Login() {
     return Form(
       key: _key1,
       child: Container(
@@ -238,7 +237,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     "Forget Password ?",
                     style: TextStyle(color: Colors.purple),
                   ),
-                  onTap: () {},
+                  onTap: () =>myDialog(),
                 ),
               ],
             ),
@@ -252,18 +251,14 @@ class _Login_ScreenState extends State<Login_Screen> {
                     side: BorderSide(color: Colors.purple.shade300),
                     borderRadius: BorderRadius.circular(15.0)),
                 onPressed: (){
-                  Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (_) => HomePage()));
+                  if(_key1.currentState!.validate()){
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (_) => HomePage()));
+                  }
+
 
                 },
-                // onPressed: () {
-                //   postlogin(_namecontroller.text, passwordcontroler.text)
-                //       .then((value)  {
-                //     shared.setString("token", value['token']);
-                //     Navigator.pushReplacement(
-                //         context, MaterialPageRoute(builder: (_) => HomePage()));
-                //   });
-                // },
+
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
@@ -278,6 +273,63 @@ class _Login_ScreenState extends State<Login_Screen> {
         ),
       ),
     );
+  }
+
+  myDialog() {
+    var ad = AlertDialog(
+      title: Center(child: Text("Enter your Email")),
+      //content: Text("Status:"),
+      actions: [
+        defultTextFied(
+          hint: "Enter your Email",
+          // label: "Email",
+          type: TextInputType.emailAddress,
+          pIcon: Icon(Icons.email),
+          onSave: () =>
+              (String? val) {
+            setState(() {});
+          },
+          validate: () =>
+              (String? val) {
+            if (val!.isEmpty) {
+              return "this field can't be empty";
+            }
+          },
+          vall: false,
+          mycontroler: emailcontroler,
+        ),
+        SizedBox(height:15),
+        MaterialButton(
+            minWidth: 30.0,
+            color: Colors.purple.shade300,
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: Colors.purple.shade300),
+                borderRadius: BorderRadius.circular(15.0)),
+            onPressed: (){
+
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => ResetPage()));
+
+            },
+
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Reset",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            ))
+      ],
+    );
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (BuildContext context) {
+          return ad;
+        });
   }
 
   Future postlogin(String username, String password) async {
