@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g_project/widget/fields.dart';
 import 'home_screen.dart';
 import 'p_Record.dart';
 class FullResult extends StatefulWidget {
@@ -29,7 +30,7 @@ class _FullResultState extends State<FullResult> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Final Rasult of Process")),
+        title: const Center(child: Text("Final Rasult of Process")),
         backgroundColor: Colors.purple.withOpacity(0.7),
 
       ),
@@ -38,8 +39,8 @@ class _FullResultState extends State<FullResult> {
        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(16),
-            margin: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
             height: 300,
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -61,21 +62,21 @@ class _FullResultState extends State<FullResult> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Result : ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),
+              Text("Result : ",style:t_style),
                 //SizedBox(height:10,),
-                Text("Patient Name : ${widget.PName} "),
+                Text("Patient Name : ${widget.PName} ",style:t_style),
                 //SizedBox(height: 3,),
-                Text("Patient Age :${widget.age} "),
+                Text("Patient Age :${widget.age} ",style:t_style),
                // SizedBox(height: 3,),
-                Text("Gender :${widget.Gender}"),
+                Text("Gender :${widget.Gender}",style:t_style),
                // SizedBox(height: 3,),
-                Text("phone :${widget.Gender}"),
+                Text("phone :${widget.Gender}",style:t_style),
                // SizedBox(height: 3,),
-                Text("Address :${widget.Gender}"),
+                Text("Address :${widget.Gender}",style:t_style),
               ],
             ),
           ),
-          SizedBox(height: 16,),
+          const SizedBox(height: 16,),
           Row(
             //mainAxisAlignment:MainAxisAlignment.center ,
             //crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,15 +93,15 @@ class _FullResultState extends State<FullResult> {
                         SwitchColor =! SwitchColor;
                       });
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Save",
                         style: TextStyle(color: Colors.black),
                       ),
                     )),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Expanded(child: MaterialButton(
                   minWidth: 200.0,
                   color: SwitchColor? Colors.purple.shade300:Colors.white,
@@ -115,14 +116,14 @@ class _FullResultState extends State<FullResult> {
 
                     ));
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Don't save",
                       style: TextStyle(color: Colors.black),
                     ),
                   )),),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Expanded(child: MaterialButton(
                   minWidth: 200,
                   color:SwitchColor? Colors.purple.shade300:Colors.white,

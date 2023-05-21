@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 var m_color = Colors.deepPurple[300];
 var b_color = Colors.deepPurple[200];
+var t_calor =Colors.grey[700];
+var t_style = TextStyle(
+fontSize: 20,
+fontWeight: FontWeight.bold,
+color:t_calor,
+);
+
 class defultTextFied extends StatelessWidget {
   String? hint;
   String? label;

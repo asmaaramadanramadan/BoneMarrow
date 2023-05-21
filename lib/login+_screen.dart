@@ -332,18 +332,4 @@ class _Login_ScreenState extends State<Login_Screen> {
         });
   }
 
-  Future postlogin(String username, String password) async {
-    var url = Uri.parse(
-        'http://ec2-16-16-128-143.eu-north-1.compute.amazonaws.com/auth/jwt/create/');
-    var response = await http.post(url, body: {
-      'username': username,
-      'password': password,
-    });
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    } else {
-      throw Exception('Failed to login');
-      //asmam
-    }
-  }
 }

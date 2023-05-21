@@ -1,10 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
  import 'package:flutter/material.dart';
-// import 'package:investment/cardDesign.dart';
-// import 'package:investment/dataset.dart';
-// import 'package:investment/investment.dart';
-// import 'package:investment/lastInvestment.dart';
+
 
 class HomePage extends StatefulWidget {
   @override

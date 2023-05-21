@@ -27,7 +27,8 @@ class _ClassificationState extends State<Classification> {
   var gendercontroler = TextEditingController();
   var agecontroler = TextEditingController();
   var addresscontroler = TextEditingController();
-
+  var nidcontroler = TextEditingController();
+  final _key = GlobalKey<FormState>();
   var gender;
   String? _radioVal;
 
@@ -64,241 +65,258 @@ class _ClassificationState extends State<Classification> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: defultTextFied(
-                     // hint: "Enter National ID",
-                      label: " NID",
-                      type: TextInputType.number,
-                      pIcon: Icon(Icons.edit),
-                      onSave: () => (String? val) {
-                        setState(() {});
-                      },
-                      validate: () => (String? val) {
-                        if (val!.isEmpty) {
-                          return "this field can't be empty";
-                        }
-                      },
-                      vall: false,
-                      mycontroler: namecontroler,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  // TextButton(
-                  //   child: Text("Check"),
-                  //   onPressed: (){},
-                  // )
-                  FloatingActionButton.small(
-                    onPressed: () {},
-                    backgroundColor: Colors.purple,
-                    child: Icon(Icons.check),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              defultTextFied(
-               // hint: "Enter Patient name",
-                label: " Name",
-                type: TextInputType.text,
-                pIcon: Icon(Icons.person),
-                onSave: () => (String? val) {
-                  setState(() {});
-                },
-                validate: () => (String? val) {
-                  if (val!.isEmpty) {
-                    return "this field can't be empty";
-                  }
-                },
-                vall: false,
-                mycontroler: namecontroler,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              defultTextFied(
-               // hint: "Patient Age",
-                label: "Age",
-                type: TextInputType.number,
-                pIcon: Icon(Icons.edit),
-                onSave: () => (String? val) {
-                  setState(() {});
-                },
-                validate: () => (String? val) {
-                  if (val!.isEmpty) {
-                    return "this field can't be empty";
-                  }
-                },
-                vall: false,
-                mycontroler: agecontroler,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              defultTextFied(
-                hint: "Patient phone",
-                label: "Phone",
-                type: TextInputType.number,
-                pIcon: Icon(Icons.phone_android),
-                onSave: () => (String? val) {
-                  setState(() {});
-                },
-                validate: () => (String? val) {
-                  if (val!.isEmpty) {
-                    return "this field can't be empty";
-                  }
-                },
-                vall: false,
-                mycontroler: phonecontroler,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              defultTextFied(
-                hint: "Patient Address",
-                label: "Address",
-                type: TextInputType.number,
-                pIcon: Icon(Icons.home_outlined),
-                onSave: () => (String? val) {
-                  setState(() {});
-                },
-                validate: () {},
-                vall: false,
-                mycontroler: addresscontroler,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Gender ?",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text("Male"),
-                      value: "male",
-                      groupValue: gender,
-                      activeColor: Colors.purple,
-                      onChanged: (value) {
-                        setState(() {
-                          gender = value.toString();
-                        });
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text("Female"),
-                      value: "female",
-                      groupValue: gender,
-                      activeColor: Colors.purple,
-                      onChanged: (value) {
-                        setState(() {
-                          gender = value.toString();
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MaterialButton(
-                  minWidth: 30.0,
-                  color: Colors.purple.shade300,
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(15.0)),
-                  onPressed: fitchImage,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Upload Image",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 350,
-                height: 300,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(5),
-                child: Center(
-                    child: pickedImage == null
-                        ? CircularProgressIndicator(
-                            color: Colors.purple.shade200,
-                          )
-                        : Image.file(
-                            pickedImage!,
-                            width: 400,
-                            height: 400,
-                          )),
-                decoration: BoxDecoration(
-                    //color: Colors.yellow[100],
-                    border: Border.all(
-                  color: Colors.purple.shade100,
-                  width: 3,
-                )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MaterialButton(
-                  minWidth: 30.0,
-                  color: Colors.purple.shade300,
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.purple.shade300),
-                      borderRadius: BorderRadius.circular(15.0)),
-                  onPressed: myDialog,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Start processing",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
-            ],
-          ),
+          child:PatientData() ,
         ),
       ),
     );
   }
+  Form PatientData(){
+    return Form(
+      key: _key,
+      child:Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: defultTextFied(
+                  // hint: "Enter National ID",
+                  label: " NID",
+                  type: TextInputType.number,
+                  pIcon: const Icon(Icons.edit),
+                  onSave: () => (String? val) {
+                    setState(() {});
+                  },
+                  validate: () => (String? val) {
+                    if (val!.isEmpty) {
+                      return "this field can't be empty";
+                    }
+                  },
+                  vall: false,
+                  mycontroler: nidcontroler,
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              // TextButton(
+              //   child: Text("Check"),
+              //   onPressed: (){},
+              // )
+              FloatingActionButton.small(
+                onPressed: () {},
+                backgroundColor: Colors.purple,
+                child: const Icon(Icons.check),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          defultTextFied(
+            // hint: "Enter Patient name",
+            label: " Name",
+            type: TextInputType.text,
+            pIcon: const Icon(Icons.person),
+            onSave: () => (String? val) {
+              setState(() {});
+            },
+            validate: () => (String? val) {
+              if (val!.isEmpty) {
+                return "this field can't be empty";
+              }
+            },
+            vall: false,
+            mycontroler: namecontroler,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          defultTextFied(
+            // hint: "Patient Age",
+            label: "Age",
+            type: TextInputType.number,
+            pIcon: const Icon(Icons.edit),
+            onSave: () => (String? val) {
+              setState(() {});
+            },
+            validate: () => (String? val) {
+              if (val!.isEmpty) {
+                return "this field can't be empty";
+              }
+            },
+            vall: false,
+            mycontroler: agecontroler,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          defultTextFied(
+            hint: "Patient phone",
+            label: "Phone",
+            type: TextInputType.number,
+            pIcon: const Icon(Icons.phone_android),
+            onSave: () => (String? val) {
+              setState(() {});
+            },
+            validate: () => (String? val) {
+              if (val!.isEmpty) {
+                return "this field can't be empty";
+              }
+            },
+            vall: false,
+            mycontroler: phonecontroler,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          defultTextFied(
+            hint: "Patient Address",
+            label: "Address",
+            type: TextInputType.number,
+            pIcon: const Icon(Icons.home_outlined),
+            onSave: () => (String? val) {
+              setState(() {});
+            },
+            validate: () => (String? val) {
+              if (val!.isEmpty) {
+                return "this field can't be empty";
+              }
+            },
+            vall: false,
+            mycontroler: addresscontroler,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: [
+              const Text(
+                "Gender ?",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                child: RadioListTile(
+                  title: const Text("Male"),
+                  value: "male",
+                  groupValue: gender,
+                  activeColor: Colors.purple,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value.toString();
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: RadioListTile(
+                  title: const Text("Female"),
+                  value: "female",
+                  groupValue: gender,
+                  activeColor: Colors.purple,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value.toString();
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          MaterialButton(
+              minWidth: 30.0,
+              color: Colors.purple.shade300,
+              shape: RoundedRectangleBorder(
+                  side: const BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(15.0)),
+              onPressed: fitchImage,
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Upload Image",
+                  style: TextStyle(color: Colors.white),
+                ),
+              )),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 350,
+            height: 300,
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              //color: Colors.yellow[100],
+                border: Border.all(
+                  color: Colors.purple.shade100,
+                  width: 3,
+                )),
+            child: Center(
+                child: pickedImage == null
+                    ? CircularProgressIndicator(
+                  color: Colors.purple.shade200,
+                )
+                    : Image.file(
+                  pickedImage!,
+                  width: 400,
+                  height: 400,
+                )),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          MaterialButton(
+              minWidth: 30.0,
+              color: Colors.purple.shade300,
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.purple.shade300),
+                  borderRadius: BorderRadius.circular(15.0)),
+              onPressed: (){
+                if(_key.currentState!.validate()){
+                  myDialog();
+                }
 
+
+              },
+
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Start processing",
+                  style: TextStyle(color: Colors.white),
+                ),
+              )),
+        ],
+      ) ,
+
+    );
+  }
   myDialog() {
     Widget saveButton = TextButton(
-      child: Text(
+      child: const Text(
         "Save",
         style: TextStyle(color: Colors.purple),
       ),
       onPressed: () {},
     );
     Widget cancelButton = TextButton(
-      child: Text("Cancel", style: TextStyle(color: Colors.purple)),
+      child: const Text("Cancel", style: TextStyle(color: Colors.purple)),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget datailsButton = TextButton(
-      child: Text("Show in details", style: TextStyle(color: Colors.purple)),
+      child: const Text("Show in details", style: TextStyle(color: Colors.purple)),
       onPressed: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
           /* return FullResult(
@@ -309,13 +327,13 @@ class _ClassificationState extends State<Classification> {
             age: agecontroler.text,
             Gender: gendercontroler.text,
           );*/
-          return C_FullResult();
+          return const C_FullResult();
         }));
       },
     );
     var ad = AlertDialog(
-      title: Center(child: Text("Result")),
-      content: Text("Status:"),
+      title: const Center(child: Text("Result")),
+      content: const Text("Status:"),
       actions: [
         saveButton,
         cancelButton,
@@ -330,25 +348,4 @@ class _ClassificationState extends State<Classification> {
         });
   }
 
-  Future updateProfileWithImage(Map<String, String> data, String file) async {
-    var request = MultipartRequest('POST',
-        Uri.parse("http://radwa34.pythonanywhere.com/doctor/api/patients/"));
-
-    request.fields.addAll(data);
-    request.headers['Authorization'] = "";
-    //  request.files.add(http.MultipartFile.fromBytes('file', File(file.path).readAsBytesSync(),filename: file.path));
-    //  var res = await request.send();
-
-    var picture = MultipartFile.fromBytes(
-        'medicalphoto', File(file).readAsBytesSync(),
-        filename: file);
-
-    request.files.add(picture);
-    var response = await request.send();
-    var responsseData = await response.stream.toBytes();
-    var result = String.fromCharCodes(responsseData);
-
-    print(result);
-    // print(res.headers);
-  }
 }

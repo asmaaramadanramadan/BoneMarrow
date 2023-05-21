@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g_project/profileScreen.dart';
+import 'package:g_project/search_screen.dart';
 import 'package:g_project/splash_Screen.dart';
 import 'Prediction_Screen1.dart';
 import 'classification_screen.dart';
@@ -42,7 +43,7 @@ class _NavDrawerState extends State<NavDrawer> {
       ),
       child: Column(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
               radius: 52,
               backgroundImage:
                   AssetImage('assets/images/Bone_marrow_biopsy.jpg')
@@ -60,8 +61,9 @@ class _NavDrawerState extends State<NavDrawer> {
             height: 8,
           ),
           Text(
-            "(Prediction & classification)",
-            style: TextStyle(fontSize: 18, color: Colors.black),
+            "(Transplantation)",
+            style: TextStyle(
+                fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 8,
@@ -99,7 +101,7 @@ class _NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               'Prediction',
-              style: TextStyle(fontSize: 17, color: Colors.black),
+              style: TextStyle(fontSize: _drawerFontSize, color: Colors.black),
             ),
             onTap: () {
               Navigator.push(context,
@@ -108,36 +110,20 @@ class _NavDrawerState extends State<NavDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.screen_lock_landscape_rounded,
+              Icons.search,
               size: _drawerIconSize,
               color: Colors.purple.shade200,
             ),
             title: Text(
               'Search for Patient',
-              style: TextStyle(fontSize: 17, color: Colors.black),
+              style: TextStyle(fontSize: _drawerFontSize, color: Colors.black),
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => splashScreen()));
+                  MaterialPageRoute(builder: (context) => SearchPage()));
             },
           ),
-          // ListTile(
-          //   leading: Icon(Icons.login_rounded,
-          //       size: _drawerIconSize, color:Colors.purple.shade200),
-          //   title: Text(
-          //     'Login Page',
-          //     style: TextStyle(
-          //       fontSize: _drawerFontSize,
-          //         color:Colors.black
-          //     ),
-          //   ),
-          //   onTap: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => Login_Screen()),
-          //     );
-          //   },
-          // ),
+
           // ListTile(
           //   leading: Icon(Icons.person_add_alt_1,
           //       size: _drawerIconSize, color:Colors.purple.shade200),
@@ -194,28 +180,59 @@ class _NavDrawerState extends State<NavDrawer> {
           //   },
           // ),*/
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
+            leading: Icon(
+              Icons.account_circle,
+              size: _drawerIconSize,
+              color: Colors.purple.shade200,
+            ),
+            title: Text(
+              'Profile',
+              style: TextStyle(fontSize: _drawerFontSize, color: Colors.black),
+            ),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>  ProfileScreen(isAppar: true,)));
+                  builder: (context) => ProfileScreen(
+                        isAppar: true,
+                      )));
             },
           ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+          ListTile(
+              leading: Icon(
+                Icons.settings,
+                size: _drawerIconSize,
+                color: Colors.purple.shade200,
+              ),
+              title: Text(
+                'Settings',
+                style:
+                    TextStyle(fontSize: _drawerFontSize, color: Colors.black),
+              )),
+          ListTile(
+            leading: Icon(Icons.login_rounded,
+                size: _drawerIconSize, color:Colors.purple.shade200),
+            title: Text(
+              'Login Page',
+              style: TextStyle(
+                  fontSize: _drawerFontSize,
+                  color:Colors.black
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login_Screen()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(
               Icons.logout_rounded,
               size: _drawerIconSize,
-              color: Theme.of(context).colorScheme.secondary,
+              color: Colors.red,
             ),
             title: Text(
               'Logout',
-              style: TextStyle(
-                  fontSize: _drawerFontSize,
-                  color: Theme.of(context).colorScheme.secondary),
+              style: TextStyle(fontSize: _drawerFontSize, color: Colors.black),
             ),
             onTap: () {
               Navigator.of(context)

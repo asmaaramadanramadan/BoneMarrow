@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:g_project/widget/fields.dart';
 
 import 'p_fullResult.dart';
 //import 'package:managment/data/model/add_date.dart';
@@ -73,47 +74,51 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
       width: 340,
       child: Column(
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           name(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Age(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           n_id(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           phone(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           gender(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           address(),
-          SizedBox(height: 10),
-          load(),
+          const SizedBox(height: 10),
+          // load(),
 
 
 
-          // InkWell(
-          //   onTap: () {
-          //     loadP_File();
-          //   },
-          //   child: Container(
-          //       height: 40,
-          //       width: 100,
-          //       color: Colors.purple,
-          //       child: const Center(
-          //           child: Text(
-          //             "load files",
-          //             style: TextStyle(color: Colors.white),
-          //           ))),
-          // ),
-          SizedBox(height: 20),
+          InkWell(
+            onTap: () {
+              loadP_File();
+            },
+            child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: m_color!,
+                ),
+                height: 40,
+                width: 100,
+
+                child: const Center(
+                    child: Text(
+                      "upload files",
+                      style: TextStyle(color: Colors.white),
+                    ))),
+          ),
+          const SizedBox(height: 20),
           //Spacer(),
-          save(),
-          SizedBox(height: 20),
+          StartProcess(),
+          const SizedBox(height: 20),
 
         ],
       ),
     );
   }
-  GestureDetector save() {
+  GestureDetector StartProcess() {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
@@ -134,7 +139,7 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
         ),
         width: 130,
         height: 40,
-        child: Text(
+        child: const Text(
           'Start Process',
           style: TextStyle(
             //fontFamily: 'f',
@@ -152,15 +157,15 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
       child: TextFormField(
         controller: namecontroler,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'Name',
           labelStyle: TextStyle(fontSize: 20, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+              borderSide: const BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: const BorderSide(width: 2, color: Color(0xff368983))),
         ),
           keyboardType: TextInputType.text,
       ),
@@ -169,60 +174,75 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
   Padding Age() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
+      child: TextFormField(
         controller: agecontroler,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'Age',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+              borderSide: const BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: const BorderSide(width: 2, color: Color(0xff368983))),
         ),
         keyboardType: TextInputType.number,
+        validator:  (String? val) {
+          if (val!.isEmpty) {
+            return "this field can't be empty";
+          }
+        },
       ),
     );
   }
   Padding n_id() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
+      child: TextFormField(
         controller: n_idcontroler,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'National ID',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+              borderSide: const BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(width: 2, color: Color(0xff368983))),
         ),
         keyboardType: TextInputType.number,
+        validator:  (String? val) {
+          if (val!.isEmpty) {
+            return "this field can't be empty";
+          }
+        },
       ),
     );
   }
   Padding phone() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.number,
         controller:phonecontroler,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'Phone',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+              borderSide: const BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: const BorderSide(width: 2, color: Color(0xff368983))),
         ),
+        validator:  (String? val) {
+          if (val!.isEmpty) {
+            return "this field can't be empty";
+          }
+        },
       ),
     );
   }
@@ -230,13 +250,13 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         width: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             width: 2,
-            color: Color(0xffC5C5C5),
+            color: const Color(0xffC5C5C5),
           ),
         ),
         child: DropdownButton<String>(
@@ -248,6 +268,7 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
           }),
           items: _itemei
               .map((e) => DropdownMenuItem(
+            value: e,
             child: Container(
               alignment: Alignment.center,
               child: Row(
@@ -259,7 +280,6 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
                 ],
               ),
             ),
-            value: e,
           ))
               .toList(),
           selectedItemBuilder: (BuildContext context) => _itemei
@@ -267,8 +287,8 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
             children: [Text(e)],
           ))
               .toList(),
-          hint: Padding(
-            padding: const EdgeInsets.only(top: 12),
+          hint: const Padding(
+            padding: EdgeInsets.only(top: 12),
             child: Text(
               'Gender',
               style: TextStyle(color: Colors.grey),
@@ -287,42 +307,47 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
       child: TextFormField(
         controller: addresscontroler,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'address',
           labelStyle: TextStyle(fontSize: 17,
               color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+              borderSide: const BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: const BorderSide(width: 2, color: Color(0xff368983))),
         ),
         keyboardType: TextInputType.text,
+        validator:  (String? val) {
+          if (val!.isEmpty) {
+            return "this field can't be empty";
+          }
+        },
       ),
     );
   }
-  Padding load() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: addresscontroler,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          labelText: 'upload Filee',
-          labelStyle: TextStyle(fontSize: 17,
-              color: Colors.grey.shade500),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
-        ),
-        keyboardType: TextInputType.text,
-      ),
-    );
-  }
+  // Padding load() {
+  //   return Padding(
+  //     padding: const EdgeInsets.symmetric(horizontal: 20),
+  //     child: TextFormField(
+  //       controller: addresscontroler,
+  //       decoration: InputDecoration(
+  //         contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+  //         labelText: 'upload Filee',
+  //         labelStyle: TextStyle(fontSize: 17,
+  //             color: Colors.grey.shade500),
+  //         enabledBorder: OutlineInputBorder(
+  //             borderRadius: BorderRadius.circular(10),
+  //             borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+  //         focusedBorder: OutlineInputBorder(
+  //             borderRadius: BorderRadius.circular(10),
+  //             borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+  //       ),
+  //       keyboardType: TextInputType.text,
+  //     ),
+  //   );
+  // }
   Column background_container(BuildContext context) {
     return Column(
       children: [
@@ -331,16 +356,16 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
           height: 240,
           decoration: BoxDecoration(
             color: Colors.deepPurple[300],
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
           ),
           child: Column(
             children: [
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,17 +374,17 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Icon(Icons.arrow_back, color: Colors.white),
+                      child: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
-                    Text(
+                    const Text(
                       'Patient Information',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
-                    Icon(
-                      Icons.attach_file_outlined,
+                    const Icon(
+                      Icons.notification_add,
                       color: Colors.white,
                     )
                   ],

@@ -14,84 +14,65 @@ class _PatientRecordState extends State<PatientRecord> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          child: Icon(Icons.arrow_back, color: Colors.black),
+          child:  Icon(Icons.arrow_back, color: m_color),
           onTap: () {
             Navigator.of(context).pop();
           },
         ),
-        title: Center(
+        title: const Center(
           child: Text("Patient Record", style: TextStyle(color: Colors.black)),
         ),
         backgroundColor: Colors.white,
       ),
       body: Column(children: [
-        Container(
-          height: 200.0,
+        SizedBox(
+          // height: 200.0,
           width: 400.0,
           child: Row(
             children: [
               Image.asset(
                 "assets/images/doctor4.jpg",
-                height: 160,
+                height: 170,
+                width: 140,
                 fit: BoxFit.fill,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Container(
+              SizedBox(
                 height: 160,
-                width: 160,
+                //width: 160,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       "Name :",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple,
+                        color: t_calor,
                       ),
                     ),
                     Text(
                       "Age    :",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                      style: t_style,
                     ),
                     Text(
                       "Gender :",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                      style: t_style,
                     ),
                     Text(
-                      "Date     :",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                      "Bith_Date :",
+                      style: t_style,
                     ),
                     Text(
                       "Phone :",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                      style: t_style,
                     ),
                     Text(
                       "Adreess :",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                      style: t_style,
                     ),
                   ],
                 ),
@@ -99,10 +80,10 @@ class _PatientRecordState extends State<PatientRecord> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Text("About History Diseases",
+        const Text("About History Diseases",
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -113,23 +94,26 @@ class _PatientRecordState extends State<PatientRecord> {
         ),
         Expanded(
           child: ListView.builder(
-            shrinkWrap: true,
+            //shrinkWrap: true,
             itemBuilder: (context, index) => Container(
               margin: EdgeInsets.all(12),
               height: 150,
               width: 400,
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.purple, width: 2)),
+                  border: Border.all(color:b_color!, width: 2)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text("Process Type :"),
-                      Text("Classification :"),
+                    children: [
+                      Text(
+                        "Process Type :",
+                          style: t_style,
+                      ),
+                      Text("Classification "),
                     ],
                   ),
                   const SizedBox(
@@ -138,41 +122,41 @@ class _PatientRecordState extends State<PatientRecord> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text("Result"),
-                      Text("Positive"),
+                    children: [
+                      Text("Result : ",style: t_style,),
+                      const Text("Positive"),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text("Date"),
-                      Text("12/2/2020"),
+                    children: [
+                      Text("Date : ",style: t_style,),
+                      const Text("12/2/2020"),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                 ],
               ),
             ),
-            itemCount: 10,
+            itemCount: 10,// ايتغير ع حسب العدد اللي جي
           ),
         )
       ]),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.purple,
+        backgroundColor: m_color,
         child: const Icon(Icons.add),
         onPressed: () {
           showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text("What Do You Want:"),
+                title: Text("What Do You Want :"),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -187,57 +171,68 @@ class _PatientRecordState extends State<PatientRecord> {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(m_color!),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop(1);
-                      },
+                      onPressed: () {},
+                      child: Text("Edit"),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(m_color!),
+                      ),
+                      onPressed: () {},
                       child: Text("Add Process"),
                     ),
+
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //     shape:
+                    //         MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //       RoundedRectangleBorder(
+                    //         borderRadius: BorderRadius.circular(20),
+                    //       ),
+                    //     ),
+                    //     backgroundColor:
+                    //         MaterialStateProperty.all<Color>(m_color!),
+                    //   ),
+                    //   onPressed: () {
+                    //     Navigator.of(context).pop(2);
+                    //   },
+                    //   child: Text("Delete Process"),
+                    // ),
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //     shape:
+                    //         MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //       RoundedRectangleBorder(
+                    //         borderRadius: BorderRadius.circular(20),
+                    //       ),
+                    //     ),
+                    //     backgroundColor:
+                    //         MaterialStateProperty.all<Color>(m_color!),
+                    //   ),
+                    //   onPressed: () {
+                    //     Navigator.of(context).pop(3);
+                    //   },
+                    //   child: Text("Update Process"),
+                    // ),
                     ElevatedButton(
                       style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(m_color!),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(m_color!),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop(2);
-                      },
-                      child: Text("Delete Process"),
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(m_color!),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop(3);
-                      },
-                      child: Text("Update Process"),
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(m_color!),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop(3);
-                      },
+                      onPressed: () {},
                       child: Text("Delete Record"),
                     ),
                   ],
@@ -247,46 +242,40 @@ class _PatientRecordState extends State<PatientRecord> {
           );
         },
       ),
-
-      // floatingActionButton:FloatingActionButton(
-      //   onPressed: () =>FlatDesign(context),
-      //   backgroundColor: Colors.purple,
-      //   child: const Icon(Icons.add),
-      // )
     );
   }
 
-  // void FlatDesign(BuildContext context) async {
-  //   await showMenu(
-  //     context: context,
-  //     position: RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),
-  //     items: [
-  //       PopupMenuItem(
-  //         child: Text("Button 1"),
-  //         value: 1,
-  //       ),
-  //       PopupMenuItem(
-  //         child: Text("Button 2"),
-  //         value: 2,
-  //       ),
-  //       PopupMenuItem(
-  //         child: Text("Button 3"),
-  //         value: 3,
-  //       ),
-  //     ],
-  //     elevation: 8.0,
-  //   ).then((value) {
-  //     switch (value) {
-  //       case 1:
-  //         print("Button 1 clicked");
-  //         break;
-  //       case 2:
-  //         print("Button 2 clicked");
-  //         break;
-  //       case 3:
-  //         print("Button 3 clicked");
-  //         break;
-  //     }
-  //   });
-  // }
+// void FlatDesign(BuildContext context) async {
+//   await showMenu(
+//     context: context,
+//     position: RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),
+//     items: [
+//       PopupMenuItem(
+//         child: Text("Button 1"),
+//         value: 1,
+//       ),
+//       PopupMenuItem(
+//         child: Text("Button 2"),
+//         value: 2,
+//       ),
+//       PopupMenuItem(
+//         child: Text("Button 3"),
+//         value: 3,
+//       ),
+//     ],
+//     elevation: 8.0,
+//   ).then((value) {
+//     switch (value) {
+//       case 1:
+//         print("Button 1 clicked");
+//         break;
+//       case 2:
+//         print("Button 2 clicked");
+//         break;
+//       case 3:
+//         print("Button 3 clicked");
+//         break;
+//     }
+//   });
+// }
 }

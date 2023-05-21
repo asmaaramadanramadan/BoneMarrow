@@ -14,8 +14,9 @@ import 'Prediction_Screen1.dart';
 import 'f_Page.dart';
 import 'c_Full_result.dart';
 //import 'onboarder.dart';
-import 'p_fullResult.dart';
+import 'home_Screen1.dart';
 import 'home_screen.dart';
+import 'p_fullResult.dart';
 
 //import 'homePage.dart';
 import 'login+_screen.dart';
@@ -37,6 +38,6 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home:splashScreen());
+        home:HomePage());
   }
 }

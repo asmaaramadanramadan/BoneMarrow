@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:g_project/classification_screen.dart';
+import 'package:g_project/widget/fields.dart';
 import 'home_screen.dart';
+import 'p_Record.dart';
 
 class C_FullResult extends StatefulWidget {
   const C_FullResult({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class _C_FullResultState extends State<C_FullResult> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.purple.shade300,
+        backgroundColor: m_color,
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -26,7 +28,7 @@ class _C_FullResultState extends State<C_FullResult> {
                 borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(70),
                 ),
-                color: Colors.purple.withOpacity(0.7)),
+                color: m_color),
             child: Stack(
               children: [
                 Positioned(
@@ -43,7 +45,7 @@ class _C_FullResultState extends State<C_FullResult> {
                         )),
                   ),
                 ),
-                const Positioned(
+              Positioned(
                     top: 40,
                     left: 20,
                     child: Text(
@@ -51,7 +53,7 @@ class _C_FullResultState extends State<C_FullResult> {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple,
+                        color: t_calor,
                       ),
                     ))
               ],
@@ -76,10 +78,10 @@ class _C_FullResultState extends State<C_FullResult> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(0.8),
                             boxShadow: [
-                              new BoxShadow(
-                                  color: Colors.purple.withOpacity(0.2),
-                                  // color: Colors.grey.withOpacity(0.3),
-                                  offset: new Offset(-10.0, 10.0),
+                            new  BoxShadow(
+                                  //color: Colors.grey[200],
+                                  color: Colors.grey.withOpacity(0.3),
+                                  offset:  Offset(-10.0, 10.0),
                                   blurRadius: 20.0,
                                   spreadRadius: 40)
                             ]),
@@ -90,7 +92,7 @@ class _C_FullResultState extends State<C_FullResult> {
                   left: 15,
                   child: Card(
                     elevation: 10.0,
-                    shadowColor: Colors.grey.withOpacity(0.5),
+                    //shadowColor: Colors.grey,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
                     child: Container(
@@ -112,68 +114,45 @@ class _C_FullResultState extends State<C_FullResult> {
                   child: Container(
                     height: 200,
                     width: 160,
-                    child: Column(
+                    child:  Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Patient Data:",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          style: t_style,
                         ),
                         Divider(
                           color: Colors.purple,
                         ),
                         Text(
                           "Name :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          style: t_style,
                         ),
                         Text(
                           "Age    :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          style: t_style,
                         ),
+                        // Text(
+                        //   "Address:",
+                        //   style: t_style,
+                        // ),
                         Text(
                           "Gender :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                           style: t_style,
                         ),
                         Text(
                           "Date     :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          style: t_style,
                         ),
                         Text(
-                          "ID :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          "NID :",
+                          style: t_style,
                         ),
                         Text(
                           "Status :",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.purple,
-                          ),
+                          style: t_style,
+
                         ),
                       ],
                     ),
@@ -185,53 +164,127 @@ class _C_FullResultState extends State<C_FullResult> {
           SizedBox(
             height: 10,
           ),
+          // Container(
+          //   // height: 200.0,
+          //   width: 400.0,
+          //   decoration: const BoxDecoration(
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: Colors.grey,
+          //         blurRadius: 15.0, // soften the shadow
+          //         spreadRadius: 5.0, //extend the shadow
+          //         offset: Offset(
+          //           5.0, // Move to right 5  horizontally
+          //           5.0, // Move to bottom 5 Vertically
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          //   child: Row(
+          //     children: [
+          //       Image.asset(
+          //         "assets/images/doctor4.jpg",
+          //         height: 170,
+          //         width: 140,
+          //         fit: BoxFit.fill,
+          //       ),
+          //       const SizedBox(
+          //         width: 10,
+          //       ),
+          //       SizedBox(
+          //         height: 160,
+          //         //width: 160,
+          //         child: Column(
+          //           // mainAxisAlignment: MainAxisAlignment.start,
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             Text(
+          //               "Name :",
+          //               style: TextStyle(
+          //                 fontSize: 20,
+          //                 fontWeight: FontWeight.bold,
+          //                 color: t_calor,
+          //               ),
+          //             ),
+          //             Text(
+          //               "Age    :",
+          //               style: t_style,
+          //             ),
+          //             Text(
+          //               "Gender :",
+          //               style: t_style,
+          //             ),
+          //             Text(
+          //               "Bith_Date :",
+          //               style: t_style,
+          //             ),
+          //             Text(
+          //               "Phone :",
+          //               style: t_style,
+          //             ),
+          //             Text(
+          //               "Adreess :",
+          //               style: t_style,
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MaterialButton(
                   minWidth: 200,
-                  color: Colors.purple.shade300,
+                  color: m_color,
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.purple.shade300),
                       borderRadius: BorderRadius.circular(15.0)),
                   onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Save",
                       style: TextStyle(color: Colors.white),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               MaterialButton(
                   minWidth: 200.0,
-                  color: Colors.purple.shade300,
+                  color: m_color,
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.purple.shade300),
                       borderRadius: BorderRadius.circular(15.0)),
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Don't save",
                       style: TextStyle(color: Colors.white),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               MaterialButton(
                   minWidth: 200,
-                  color: Colors.purple.shade300,
+                  color: m_color,
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.purple.shade300),
                       borderRadius: BorderRadius.circular(15.0)),
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) =>
+                        PatientRecord()
+                    ));
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Continue",
                       style: TextStyle(color: Colors.white),
