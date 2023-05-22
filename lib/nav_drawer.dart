@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:g_project/profileScreen.dart';
 import 'package:g_project/search_screen.dart';
 import 'package:g_project/splash_Screen.dart';
+import 'package:g_project/widget/fields.dart';
 import 'Prediction_Screen1.dart';
 import 'classification_screen.dart';
 import 'package:g_project/registerScreen.dart';
@@ -37,7 +38,7 @@ class _NavDrawerState extends State<NavDrawer> {
 
   buildDrawerHeader(BuildContext context) {
     return Container(
-      color: Colors.purple.shade200,
+      color: m_color,
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top,
       ),
@@ -82,7 +83,7 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: Icon(
               Icons.screen_lock_landscape_rounded,
               size: _drawerIconSize,
-              color: Colors.purple.shade200,
+              color:  m_color,
             ),
             title: Text(
               'Classification',
@@ -97,7 +98,7 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: Icon(
               Icons.screen_lock_landscape_rounded,
               size: _drawerIconSize,
-              color: Colors.purple.shade200,
+              color:  m_color,
             ),
             title: Text(
               'Prediction',
@@ -112,7 +113,7 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: Icon(
               Icons.search,
               size: _drawerIconSize,
-              color: Colors.purple.shade200,
+              color:  m_color,
             ),
             title: Text(
               'Search for Patient',
@@ -183,7 +184,7 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: Icon(
               Icons.account_circle,
               size: _drawerIconSize,
-              color: Colors.purple.shade200,
+              color:  m_color,
             ),
             title: Text(
               'Profile',
@@ -200,7 +201,7 @@ class _NavDrawerState extends State<NavDrawer> {
               leading: Icon(
                 Icons.settings,
                 size: _drawerIconSize,
-                color: Colors.purple.shade200,
+                color:  m_color,
               ),
               title: Text(
                 'Settings',
@@ -209,7 +210,7 @@ class _NavDrawerState extends State<NavDrawer> {
               )),
           ListTile(
             leading: Icon(Icons.login_rounded,
-                size: _drawerIconSize, color:Colors.purple.shade200),
+                size: _drawerIconSize, color: m_color),
             title: Text(
               'Login Page',
               style: TextStyle(

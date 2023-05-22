@@ -43,12 +43,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       //appBar: AppBar(title: Text(titles[index]),),
       appBar: AppBar(
-        title: Center(
+        title: const Center(
             child: Text("Hello Doctor !",
                 style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold,
-                fontSize: 28
-                ))),
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 28))),
         backgroundColor: Colors.white,
         //elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       body: screens[index],
       drawer: NavDrawer(),
       bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.purple.shade200,
+        color: m_color!,
         backgroundColor: Colors.white,
         height: 30,
         index: index,
@@ -101,67 +101,105 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.all(8.0),
       child: ListView(
         children: [
-          Center(
-            child: Text(
-              "Our Main Processes",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+          // const Center(
+          //   child: Text(
+          //     "Our Main Processes",
+          //     style: TextStyle(
+          //         fontSize: 30,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.black),
+          //   ),
+          // ),
+          const SizedBox(
+            height: 14,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
             ),
+            child: const Column(children: [
+              Text(
+                "About  Processes",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              SizedBox(
+                height: 14,
+              ),
+              Center(
+                  child: Text(
+                " Anatomy of the bone. The bone is made up of compact bone, spongy bone, and bone marrow. Compact bone makes up the outer layer of the bone. Spongy bone is found mostly at the ends of bones and contains red marrow. Bone marrow is found in the center of most bones and has many blood vessels. There are two types of bone marrow: red and yellow. Red marrow contains blood stem cells that can become red blood cells, white blood cells, or platelets. Yellow marrow is made mostly of fat.",
+              )),
+              SizedBox(
+                height: 25,
+              ),
+            ]),
           ),
           SizedBox(
-            height: 14,
+            height: 20,
           ),
           Row(
             children: [
               Expanded(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  elevation: 20,
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(10),
-                        ),
-                        child: Image.asset(
-                          "assets/images/cells.jpg",
-                          height: 130,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      ListTile(
-                        title: const Text(
-                          'Classification',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text("45K"),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Classification()));
-                          },
-                          style: TextButton.styleFrom(
-                              backgroundColor: m_color,
-                              minimumSize:
-                                  Size(MediaQuery.of(context).size.width, 40)),
-                          child: const Text(
-                            'Go Process',
-                            style: TextStyle(color: Colors.white),
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Classification()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 40,
+                    child: const Column(
+                      children: [
+                        CircleAvatar(
+                            radius: 70,
+                            backgroundImage: AssetImage(
+                              'assets/images/cells.jpg',
+                            )),
+                        // ClipRRect(
+                        //   borderRadius: const BorderRadius.only(
+                        //     topLeft: Radius.circular(10),
+                        //     topRight: Radius.circular(10),
+                        //   ),
+                        //   child: Image.asset(
+                        //     "assets/images/cells.jpg",
+                        //     height: 130,
+                        //     width: MediaQuery.of(context).size.width,
+                        //     fit: BoxFit.fill,
+                        //   ),
+                        // ),
+                        ListTile(
+                          title: Text(
+                            'Classification',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
+                       //   subtitle: Text("45K"),
                         ),
-                      )
-                    ],
+                        // Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: TextButton(
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => Classification()));
+                        //     },
+                        //     style: TextButton.styleFrom(
+                        //         backgroundColor: m_color,
+                        //         minimumSize:
+                        //             Size(MediaQuery.of(context).size.width, 40)),
+                        //     child: const Text(
+                        //       'Go Process',
+                        //       style: TextStyle(color: Colors.white),
+                        //     ),
+                        //   ),
+                        // )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -169,53 +207,65 @@ class _HomePageState extends State<HomePage> {
                 width: 25,
               ),
               Expanded(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  elevation: 20,
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        ),
-                        child: Image.asset(
-                          "assets/images/Bone_marrow_biopsy.jpg",
-                          height: 130,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      ListTile(
-                        title: const Text(
-                          'Prediction',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        subtitle: Text(
-                          '30 k',
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Prediction_Screen()));
-                          },
-                          style: TextButton.styleFrom(
-                              backgroundColor: m_color,
-                              minimumSize:
-                                  Size(MediaQuery.of(context).size.width, 40)),
-                          child: const Text(
-                            'Go Process',
-                            style: TextStyle(color: Colors.white),
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Prediction_Screen()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 20,
+                    child: const Column(
+
+                      children: [
+                        CircleAvatar(
+                            radius: 70,
+                            backgroundImage: AssetImage(
+                              'assets/images/Bone_marrow_biopsy.jpg',
+                            )),
+                        // ClipRRect(
+                        //   borderRadius: const BorderRadius.only(
+                        //     topLeft: Radius.circular(10),
+                        //     topRight: Radius.circular(10),
+                        //   ),
+                        //   child: Image.asset(
+                        //     "assets/images/Bone_marrow_biopsy.jpg",
+                        //     height: 130,
+                        //     width: MediaQuery.of(context).size.width,
+                        //     fit: BoxFit.fill,
+                        //   ),
+                        // ),
+                        ListTile(
+                          title: Text(
+                            'Prediction',
+                            style: TextStyle(fontSize: 20),
                           ),
+                          // subtitle: Text(
+                          //   '30 k',
+                          // ),
                         ),
-                      )
-                    ],
+                        // Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: TextButton(
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => Prediction_Screen()));
+                        //     },
+                        //     style: TextButton.styleFrom(
+                        //         backgroundColor: m_color,
+                        //         minimumSize:
+                        //             Size(MediaQuery.of(context).size.width, 40)),
+                        //     child: const Text(
+                        //       'Go Process',
+                        //       style: TextStyle(color: Colors.white),
+                        //     ),
+                        //   ),
+                        // )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -224,30 +274,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 10,
           ),
-          // Container(
-          //   decoration: BoxDecoration(
-          //     color: b_color,
-          //   ),
-          //   child: Column(children: [
-          //     Text(
-          //       "About  Processes",
-          //       style: TextStyle(
-          //           fontSize: 30,
-          //           fontWeight: FontWeight.bold,
-          //           color: Colors.black),
-          //     ),
-          //     SizedBox(
-          //       height: 14,
-          //     ),
-          //     // Center(
-          //     //     child: Text(
-          //     //   " Anatomy of the bone. The bone is made up of compact bone, spongy bone, and bone marrow. Compact bone makes up the outer layer of the bone. Spongy bone is found mostly at the ends of bones and contains red marrow. Bone marrow is found in the center of most bones and has many blood vessels. There are two types of bone marrow: red and yellow. Red marrow contains blood stem cells that can become red blood cells, white blood cells, or platelets. Yellow marrow is made mostly of fat.",
-          //     // )),
-          //     SizedBox(
-          //       height: 25,
-          //     ),
-          //   ]),
-          // ),
+
         ],
       ),
     );

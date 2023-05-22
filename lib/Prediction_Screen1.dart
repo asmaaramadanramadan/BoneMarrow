@@ -15,7 +15,9 @@ class Prediction_Screen extends StatefulWidget {
 
 class _Prediction_ScreenState extends State<Prediction_Screen> {
   //final box = Hive.box<Add_data>('data');
-  DateTime date = new DateTime.now();
+
+  DateTime _ProcessTime = DateTime.now();
+  var ProcessTime;
  // String? selctedItem;
   String? selctedItemi;
 
@@ -121,6 +123,7 @@ class _Prediction_ScreenState extends State<Prediction_Screen> {
   GestureDetector StartProcess() {
     return GestureDetector(
       onTap: () {
+        ProcessTime = _ProcessTime;
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return FullResult(
             result: "Nigative",

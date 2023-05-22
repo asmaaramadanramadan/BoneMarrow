@@ -34,15 +34,15 @@ class _SearchPageState extends State<SearchPage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide:
-                              const BorderSide(color: Colors.purple, width: 1.2)),
+                           BorderSide(color: m_color!, width: 1.2)),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide:
-                              const BorderSide(color: Colors.purple, width: 1.2)),
+                           BorderSide(color: m_color!, width: 1.2)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide:
-                            const BorderSide(color: Colors.purple, width: 1.2),
+                             BorderSide(color: m_color!, width: 1.2),
                       ),
                     ),
                   ),
@@ -52,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 FloatingActionButton.small(
                   onPressed: () {},
-                  backgroundColor: Colors.purple,
+                  backgroundColor: m_color,
                   child: Icon(Icons.search),
                 ),
               ],
@@ -72,7 +72,7 @@ class _SearchPageState extends State<SearchPage> {
                     subtitle: Text("ID:"),
                     trailing: MaterialButton(
                         minWidth: 20.0,
-                        color: Colors.purple.shade200,
+                        color: m_color,
                         shape: RoundedRectangleBorder(
                             side: const BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.circular(15.0)),

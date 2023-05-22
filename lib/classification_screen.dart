@@ -31,6 +31,10 @@ class _ClassificationState extends State<Classification> {
   final _key = GlobalKey<FormState>();
   var gender;
   String? _radioVal;
+  //late DateTime _startTime;
+
+  DateTime _ProcessTime = DateTime.now();
+  var ProcessTime;
 
   final ImagePicker _picker = ImagePicker();
   File? pickedImage;
@@ -282,6 +286,7 @@ class _ClassificationState extends State<Classification> {
                   side: BorderSide(color: Colors.purple.shade300),
                   borderRadius: BorderRadius.circular(15.0)),
               onPressed: (){
+                ProcessTime = _ProcessTime;
                 if(_key.currentState!.validate()){
                   myDialog();
                 }

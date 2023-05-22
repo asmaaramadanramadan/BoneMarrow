@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:g_project/profileMenuWidget.dart';
+import 'package:g_project/search_screen.dart';
 import 'package:g_project/updateProfileScreen.dart';
+import 'package:g_project/widget/fields.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
         .platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: isAppar ? AppBar(
-        backgroundColor: Colors.purple[300],
+        backgroundColor: m_color,
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: const Icon(LineAwesomeIcons.angle_left)),
@@ -61,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                             height: 35,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
-                                color: Colors.purple[300]),
+                                color:m_color),
                             child: const Icon(
                               LineAwesomeIcons.alternate_pencil,
                               color: Colors.black,
@@ -90,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>const UpdateProfileScreen()));
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purple[300],
+                            backgroundColor:m_color,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text(
@@ -108,7 +110,10 @@ class ProfileScreen extends StatelessWidget {
                     ProfileMenuWidget(
                         title: " patients",
                         icon: LineAwesomeIcons.person_entering_booth,
-                        onPress: () {}),
+                        onPress: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SearchPage()));
+                        }),
                     ProfileMenuWidget(
                         title: "User Management",
                         icon: LineAwesomeIcons.user_check,
